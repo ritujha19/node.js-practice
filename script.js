@@ -27,10 +27,12 @@ app.get("/rolldice" , (req,res) => {
     let diceVal = Math.floor(Math.random() * 6) + 1;
     res.render("rolldice.ejs", {num: diceVal});
 });
-app.get("/ig/username", (req,res) => {
-    let { username } = req.params('username');
+app.get("/ig/:username", (req,res) => {
+    let { username } = req.params;
     const instaData = require('./insta.json');
-    res.render("instagram.ejs", {Userdata: JSON.stringify(instaData[username]) });
+    res.render("instagram.ejs", {
+        Userdata: instaData[username]
+    });
 })
 // app.route('/ig:/username').get((req,res) => {
 //     let { username } = req.params;
