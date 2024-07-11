@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>instagram page</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h2>this page belongs to @ <%= Userdata.name %> </h2>
     <p>
-        followers : <%= Userdata.followers %> &nbsp;&nbsp;&nbsp;&nbsp; followings : <%= Userdata.followings %>
+        followers : <%= Userdata.followers %> &nbsp;&nbsp;&nbsp;&nbsp; followings : <%= Userdata.following %>
     </p>
     <hr />
-    <% for(let post of Userdata.posts) { %>
-        <img src="<%= post.image %>" alt="image of user" />
-        <p>
-            likes : <%= post.likes %>  &nbsp;&nbsp;&nbsp;&nbsp; comments : <%= post.comments %>
-        </p>
-    <% } %>
+    <div class="posts">
+            <% for(let post of Userdata.posts) { %>
+                <img src="<%= post.image %>" alt="image of user" />
+                <p>
+                    likes : <%= post.likes %>  &nbsp;&nbsp;&nbsp;&nbsp; comments : <%= post.comments %>
+                </p>
+            <% } %>
+    </div>
 </body>
 </html>

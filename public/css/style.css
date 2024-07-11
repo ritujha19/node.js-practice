@@ -1,0 +1,16 @@
+body{
+    background-color: rgb(199, 224, 246);
+}
+h2,p{
+    font-family: cursive;
+}
+.posts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: first baseline;
+}
+img{
+    height: 200px;
+    width: 200px;
+}
