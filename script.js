@@ -20,6 +20,10 @@ app.listen(port, () => {
     console.log(`app is listening in port ${port}`);
 });
 
+app.use(express.static(path.join(__dirname,"/public/css")));
+app.use(express.static(path.join(__dirname,"/public/js")));
+app.use(express.static(path.join(__dirname,"/public/js")));
+
 app.get("/home", (req, res) =>{
     res.render("home.ejs");
 });
@@ -30,10 +34,13 @@ app.get("/rolldice" , (req,res) => {
 app.get("/ig/:username", (req,res) => {
     let { username } = req.params;
     const instaData = require('./insta.json');
-    res.render("instagram.ejs", {
-        Userdata: instaData[username]
-    });
-})
+    const Userdata = instaData[username];
+    if(Userdata){
+        res.render("instagram.ejs", { Userdata });
+    } else{
+        res.render("error.ejs");
+    }
+});
 // app.route('/ig:/username').get((req,res) => {
 //     let { username } = req.params;
 //     const instaData = require("/data.json")
